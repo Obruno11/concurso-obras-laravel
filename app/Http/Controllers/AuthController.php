@@ -20,9 +20,16 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $token = $user->createToken('Obras')->plainTextToken;
-            return response()->json(['token' => $token]);
+            return response()->json(['token' => $token, 'user' => $user]);
         }
 
         return response()->json(['message' => 'unauthorized'], 401);
+    }
+
+    public function logout(Request $request){
+        $request->user()->tokens->each(function ($token){
+            $token->delete();
+        });
+        return response()->json(['message' => 'Looged out']);
     }
 }

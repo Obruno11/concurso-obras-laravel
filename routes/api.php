@@ -11,8 +11,8 @@ Route::controller(UserController::class)->group(function() {
   Route::post('/register', 'store');
 
   //private
-  Route::post('/logout', ''); //el mismo usuario
-  Route::get('/perfil', ''); //el mismo usuario
+  Route::middleware('auth:sanctum')->get('/logout', [AuthController::class, 'logout']); //el mismo usuario
+  Route::middleware('auth:sanctum')->get('/perfil', [UserController::class, 'show']); //el mismo usuario
 });
 
 Route::controller(ObraController::class)->group(function() {
