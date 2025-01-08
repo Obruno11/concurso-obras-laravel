@@ -12,7 +12,7 @@ Route::controller(UserController::class)->group(function() {
 
   //private
   Route::middleware('auth:sanctum')->get('/logout', [AuthController::class, 'logout']); //el mismo usuario
-  Route::middleware('auth:sanctum')->get('/perfil', [UserController::class, 'show']); //el mismo usuario
+  Route::middleware('auth:sanctum')->get('/perfil/{id}', [UserController::class, 'show']); //el mismo usuario
 });
 
 Route::controller(ObraController::class)->group(function() {
