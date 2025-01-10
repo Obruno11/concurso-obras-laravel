@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Obra;
+use App\Models\User;
 
 class ObraController extends Controller
 {
@@ -33,7 +34,9 @@ class ObraController extends Controller
     {
         //
         $obra = Obra::find($id);
-        return response()->json($obra);
+        $propietario = $obra->user->name;
+
+        return response()->json([$obra, $propietario]);
     }
 
     /**
@@ -50,5 +53,17 @@ class ObraController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function galeria(){
+        $array_obras_propietario = [];
+
+        $obras = Obra::all();
+        foreach ($obras as $item){
+            $obra = ['id'=> $item->id, 'titulo' => $item->titulo, 'propietario' => $item->user->name, 'img' => $item->img_url];
+            array_push($array_obras_propietario, $obra);
+        }
+
+        return response()->json($array_obras_propietario);
     }
 }

@@ -9,4 +9,8 @@ class Obra extends Model
 {
     //
     use HasFactory;
+
+    function user(){
+        return $this->belongsTo(User::class);
+    }
 }

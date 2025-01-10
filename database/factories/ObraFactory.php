@@ -23,7 +23,7 @@ class ObraFactory extends Factory
             'img_url' => 'https://picsum.photos/300/200',
             'categoria' => $this->faker->word(),
             'estado' => $this->faker->randomElement(['pendiente', 'aprobada', 'rechazada']),
-            'propietario' => $this->faker->numberBetween(1,3),
+            'user_id' => $this->faker->numberBetween(1,3),
         ];
     }
 }

@@ -21,6 +21,7 @@ class VotoController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**

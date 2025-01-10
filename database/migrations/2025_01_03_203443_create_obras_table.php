@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('img_url');
             $table->string('categoria');
             $table->string('estado');
-            $table->index('propietario');
-            $table->foreignId('propietario')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

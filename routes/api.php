@@ -17,7 +17,7 @@ Route::controller(UserController::class)->group(function() {
 
 Route::controller(ObraController::class)->group(function() {
   //public
-  Route::get('/obras', 'index');
+  Route::get('/obras', 'galeria');
   Route::get('/obras/{id}', 'show');
 
   //private
